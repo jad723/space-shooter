@@ -92,6 +92,20 @@ namespace Space_Shooter
                 if(x is Rectangle && (string)x.Tag == "enemy")
                 {
                     Canvas.SetTop(x, Canvas.GetTop(x) + enemySpeed);
+
+                    if (Canvas.GetTop(x) > 750)
+                    {
+                        itemRemover.Add(x);
+                        damage += 10;
+                    }
+
+                    Rect enemyHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+
+                    if (playerHitBox.IntersectsWith(enemyHitBox))
+                    {
+                        itemRemover.Add(x);
+                        damage += 5;
+                    }
                 }
             }
         }
