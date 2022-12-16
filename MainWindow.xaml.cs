@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -53,7 +54,6 @@ namespace Space_Shooter
             ImageBrush playerImage = new ImageBrush();
             playerImage.ImageSource = new BitmapImage(new Uri("pack://application:,,,/images/player.png"));
             player.Fill = playerImage;
-
         }
 
         private void GameLoop(object sender, EventArgs e)
@@ -63,12 +63,34 @@ namespace Space_Shooter
 
         private void OnKeyDown(object sender, KeyEventArgs e)
         {
+            if(e.Key == Key.Left) moveLeft = true;
 
+            if(e.Key == Key.Right) moveRight = true;
         }
 
         private void OnKeyUp(object sender, KeyEventArgs e)
         {
+            if(e.Key == Key.Left) moveLeft = false;
 
+            if(e.Key == Key.Right) moveRight = false;
+
+            if(e.Key == Key.Space)
+            {
+
+                Rectangle newBullet = new Rectangle
+                {
+                    Tag = "bullet",
+                    Height = 20,
+                    Width = 5,
+                    Fill = Brushes.White,
+                    Stroke = Brushes.Red
+                };
+
+                Canvas.SetLeft(newBullet, Canvas.GetLeft(player) + player.Width / 2);
+                Canvas.SetTop(newBullet, Canvas.GetTop(player) - newBullet.Height);
+
+                MyCanvas.Children.Add(newBullet);
+            }
         }
 
         private void MakeEnemies()
