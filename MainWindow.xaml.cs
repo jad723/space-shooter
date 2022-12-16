@@ -88,6 +88,11 @@ namespace Space_Shooter
 
                     if (Canvas.GetTop(x) < 10) itemRemover.Add(x);
                 }
+
+                if(x is Rectangle && (string)x.Tag == "enemy")
+                {
+                    Canvas.SetTop(x, Canvas.GetTop(x) + enemySpeed);
+                }
             }
         }
 
