@@ -108,6 +108,12 @@ namespace Space_Shooter
                     }
                 }
             }
+
+            foreach(Rectangle i in itemRemover) MyCanvas.Children.Remove(i);
+
+
+
+
         }
 
         private void OnKeyDown(object sender, KeyEventArgs e)
