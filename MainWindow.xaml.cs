@@ -87,6 +87,22 @@ namespace Space_Shooter
                     Rect bulletHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
 
                     if (Canvas.GetTop(x) < 10) itemRemover.Add(x);
+
+                    foreach (var y in MyCanvas.Children.OfType<Rectangle>())
+                    {
+                        
+                        if(y is Rectangle && (string) y.Tag == "enemy")
+                        {
+                            Rect enemyHit = new Rect(Canvas.GetLeft(y), Canvas.GetTop(y), y.Width, y.Height);
+
+                            if (bulletHitBox.IntersectsWith(enemyHit))
+                            {
+                                itemRemover.Add(x);
+                                itemRemover.Add(y);
+                                score++;
+                            }
+                        }
+                    }
                 }
 
                 if(x is Rectangle && (string)x.Tag == "enemy")
