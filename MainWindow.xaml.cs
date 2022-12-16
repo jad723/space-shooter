@@ -127,8 +127,22 @@ namespace Space_Shooter
 
             foreach(Rectangle i in itemRemover) MyCanvas.Children.Remove(i);
 
+            if(score > 5)
+            {
+                limit = 20;
+                enemySpeed = 15;
+            }
 
+            if(damage > 99)
+            {
+                gameTimer.Stop();
+                damageText.Content = "Damage: 100";
+                damageText.Foreground = Brushes.Red;
+                MessageBox.Show("Captain you have destroyed " + score + " Alien Ships" + Environment.NewLine + "Press Ok to  play again", "Space Battle Shooter Game says: ");
 
+                System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+                Application.Current.Shutdown();
+            }
 
         }
 
