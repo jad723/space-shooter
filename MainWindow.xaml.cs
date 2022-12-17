@@ -138,7 +138,7 @@ namespace Space_Shooter
                 gameTimer.Stop();
                 damageText.Content = "Damage: 100";
                 damageText.Foreground = Brushes.Red;
-                MessageBox.Show("Captain you have destroyed " + score + " Alien Ships" + Environment.NewLine + "Press Ok to  play again", "Space Battle Shooter Game says: ");
+                MessageBox.Show("Captain you have destroyed " + score + " Alien Ships", "Space Battle Shooter Game says: ");
 
                 System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
                 Application.Current.Shutdown();
