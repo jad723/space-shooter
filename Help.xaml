@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Space_Shooter"
         mc:Ignorable="d"
-        ResizeMode="NoResize"
+          ResizeMode="NoResize"
         Title="Space Battle Shooter Game" Icon="/images/player.ico" Height="615" Width="540">
 
     <Canvas Name="MyCanvas" Focusable="True" Background="Black">
